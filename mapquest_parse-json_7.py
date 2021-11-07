@@ -27,6 +27,16 @@ while True:
         for each in json_data["route"]["legs"][0]["maneuvers"]:
             print(Fore.GREEN + (each["narrative"]) + " (" + str("{:.2f}".format((each["distance"])*1.61) + " km)"))
             print('Extra Information: ')
+            if json_data["route"]["legs"][0]['hasTollRoad'] == True:
+                print("This direction has a toll fee.")
+            else:
+                print("This direction does not have a toll fee.")
+
+            if json_data["route"]["legs"][0]['hasUnpaved'] == True:
+                print("This direction has unpaved road.")
+            else:
+                print("This direction has a paved road.")
+            
             print("=============================================\n") 
         print("Fuel Used The Entire Trip: " + str(json_data["route"]["fuelUsed"]))
     elif json_status == 402: 
